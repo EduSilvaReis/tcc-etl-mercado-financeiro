@@ -39,6 +39,8 @@ Microsoft SQL Server configurado e rodando localmente ou em nuvem.
 
 Driver ODBC para SQL Server instalado.
 
+⚠️ IMPORTANTE: O Microsoft SQL Server é um requisito estrito para o funcionamento do pipeline ponta a ponta (Extração, Transformação e Carga). No entanto, o código possui um mecanismo de resiliência (fallback): caso o banco de dados esteja inacessível, o sistema extrairá uma lista padrão de ativos e funcionará em "Modo CSV", gerando apenas o backup local na pasta data/ para garantir que os dados não sejam perdidos.
+
 ## 2. Configuração do Ambiente
 Clone o repositório e instale as dependências:
 
