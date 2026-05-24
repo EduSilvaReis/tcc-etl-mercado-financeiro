@@ -31,8 +31,8 @@ ETL_MERCADO_FINANCEIRO/
 └── requirements.txt       # Dependências do projeto
 ```
 
-#⚙️ Como Configurar e Executar
-##1. Pré-requisitos
+# ⚙️ Como Configurar e Executar
+## 1. Pré-requisitos
 Python instalado na máquina.
 
 Microsoft SQL Server configurado e rodando localmente ou em nuvem.
