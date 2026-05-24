@@ -39,7 +39,7 @@ Microsoft SQL Server configurado e rodando localmente ou em nuvem.
 
 Driver ODBC para SQL Server instalado.
 
-2. Configuração do Ambiente
+## 2. Configuração do Ambiente
 Clone o repositório e instale as dependências:
 
 Clone o repositório
@@ -55,20 +55,20 @@ source venv/Scripts/activate  # No Windows
 Instale as bibliotecas necessárias
 pip install -r requirements.txt
 
-##3. Variáveis de Ambiente
+## 3. Variáveis de Ambiente
 Crie um arquivo chamado .env na raiz do projeto (este arquivo é ignorado pelo Git por segurança) e adicione as credenciais do seu banco de dados:
 DB_SERVER=localhost
 DB_NAME=NomeDoSeuBanco
 DB_USER=SeuUsuario
 DB_PASSWORD=SuaSenha
 
-4. Execução Manual
+## 4. Execução Manual
 Para rodar o pipeline pelo terminal e visualizar os logs de execução:
 ```Text
 python src/main.py
 ```
 
-##5. Execução Automatizada
+## 5. Execução Automatizada
 O projeto conta com o script executar_etl.bat. Ele foi desenhado para ser acoplado ao Agendador de Tarefas do Windows (Task Scheduler), permitindo que o pipeline rode de forma autônoma (ex: diariamente após o fechamento do pregão), ativando o ambiente virtual automaticamente e registrando os resultados.
 
 #🚀 O que o projeto gera?
