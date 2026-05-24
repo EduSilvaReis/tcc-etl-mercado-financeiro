@@ -69,45 +69,7 @@ class DataLoader:
                 logging.warning("Aviso: Dados de hoje já existem no banco. Ignorando para evitar duplicidade.")
             else:
                 logging.error(f"Erro crítico na carga SQL: {e}")
-    # def load_fato(self, df):
-    #     try:
-    #         logging.info(f"Enviando {len(df)} registros para Fato_Cotacao...")
-    #         mapping = {
-    #             'Data': 'Data_Pregao',
-    #             'Asset_ID': 'Id_Ativo',
-    #             'Open': 'Preco_Abertura',
-    #             'High': 'Preco_Maxima',
-    #             'Low': 'Preco_Minima',
-    #             'Close': 'Preco_Fechamento',
-    #             'Adj_Close': 'Preco_Fechamento_Ajustado',
-    #             'Volume': 'Volume_Negociado'
-    #         }
-    #         df_ready = df.rename(columns=mapping)
-            
-    #         # --- TRECHO NOVO: BACKUP EM CSV ---
-    #         # Cria a pasta 'data' caso ela não exista
-    #         os.makedirs('data', exist_ok=True)
-            
-    #         # Salva o lote de dados atual como um backup de segurança
-    #         csv_path = os.path.join('data', 'ultima_carga_cotacoes.csv')
-    #         df_ready.to_csv(csv_path, index=False)
-    #         logging.info(f"Backup local salvo na pasta: {csv_path}")
-    #         # ----------------------------------
-            
-    #         # Executa a carga
-    #         df_ready.to_sql('Fato_Cotacao', self.engine, if_exists='append', index=False)
-    #         logging.info("Carga concluída com sucesso!")
-            
-    #     except Exception as e:
-    #         error_msg = str(e)
-            
-    #         # Verificação robusta: códigos de erro 2627 (Unique) ou 23000 (Integrity)
-    #         # ou termos em português que o seu SQL Server retornou
-    #         if any(term in error_msg for term in ["2627", "23000", "chave duplicada", "UNIQUE KEY"]):
-    #             logging.warning("Aviso: Dados de hoje já existem no banco. Ignorando para evitar duplicidade.")
-    #         else:
-    #             # Se for outro erro (ex: banco fora do ar), ele mostra o erro real
-    #             logging.error(f"Erro crítico na carga SQL: {e}")
+
 
     def get_asset_mapping(self):
         try:

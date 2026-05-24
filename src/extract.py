@@ -45,9 +45,3 @@ class MarketDataExtractor:
             logging.error(f"Erro crítico durante a extração: {e}")
             return pd.DataFrame()
 
-# # Pequeno teste local (pode apagar depois se quiser)
-# if __name__ == "__main__":
-#     test_tickers = ["PETR4.SA", "VALE3.SA", "ITUB4.SA"]
-#     extractor = MarketDataExtractor(test_tickers)
-#     df = extractor.fetch_data()
-#     print(df.head())
