@@ -2,6 +2,7 @@ import os
 import urllib
 import logging
 import pandas as pd
+from datetime import datetime  # <-- Importação adicionada aqui
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 
@@ -38,11 +39,19 @@ class DataLoader:
             }
             df_ready = df.rename(columns=mapping)
             
+            
             # --- 1. BACKUP LOCAL EM CSV ---
             os.makedirs('data', exist_ok=True)
+            
+            # Criamos uma cópia exclusiva para o CSV para não afetar a tabela do SQL Server
+            df_csv = df_ready.copy()
+            
+            # Cria a coluna com a data e hora exata da execução da automação
+            df_csv['Data_Execucao_Automacao'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            
             csv_path = os.path.join('data', 'ultima_carga_cotacoes.csv')
-            df_ready.to_csv(csv_path, index=False)
-            logging.info(f"Backup local salvo na pasta: {csv_path}")
+            df_csv.to_csv(csv_path, index=False)
+            logging.info(f"Backup local salvo com carimbo de data/hora em: {csv_path}")
 
             # --- 2. CARGA INCREMENTAL (O "Pulo do Gato") ---
             # Busca qual foi a última data registrada no banco
