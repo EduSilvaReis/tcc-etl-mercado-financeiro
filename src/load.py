@@ -43,7 +43,7 @@ class DataLoader:
             # --- 1. BACKUP LOCAL EM CSV ---
             os.makedirs('data', exist_ok=True)
             
-            # Criamos uma cópia exclusiva para o CSV para não afetar a tabela do SQL Server
+            #Cópia exclusiva para o CSV para não afetar a tabela do SQL Server
             df_csv = df_ready.copy()
             
             # Cria a coluna com a data e hora exata da execução da automação
@@ -53,8 +53,7 @@ class DataLoader:
             df_csv.to_csv(csv_path, index=False)
             logging.info(f"Backup local salvo com carimbo de data/hora em: {csv_path}")
 
-            # --- 2. CARGA INCREMENTAL (O "Pulo do Gato") ---
-            # Busca qual foi a última data registrada no banco
+            # --- 2. CARGA INCREMENTAL ---
             max_date_query = "SELECT MAX(Data_Pregao) FROM Fato_Cotacao"
             max_date_db = pd.read_sql(max_date_query, self.engine).iloc[0, 0]
 

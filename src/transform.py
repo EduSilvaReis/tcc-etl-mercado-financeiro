@@ -9,7 +9,7 @@ class DataTransformer:
         try:
             logging.info("Iniciando a transformação dos dados...")
 
-            # 1. 'Derreter' o dataframe
+            # 1. Prepara o dataframe
             df_stacked = df_raw.stack(level=1, future_stack=True).reset_index()
 
             # 2. Padronizar nomes de colunas dinamicamente
@@ -30,7 +30,7 @@ class DataTransformer:
             df_stacked['Asset_ID'] = df_stacked['Ticker'].map(self.asset_mapping)
 
             # 4. LIMPEZA CRÍTICA (Evita os erros de NULL no SQL)
-            # Removemos linhas onde o Ativo não foi mapeado OU o Preço veio vazio (Falhas da API)
+            # Remove linhas onde o Ativo não foi mapeado OU o Preço veio vazio (Falhas da API)
             df_stacked.dropna(subset=['Asset_ID', 'Close'], inplace=True)
             
             # 5. Filtrar apenas as colunas que o load.py espera
