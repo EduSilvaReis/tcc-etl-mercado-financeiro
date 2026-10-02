@@ -5,7 +5,7 @@ echo ===================================================
 echo.
 
 :: 1. Entra na pasta do projeto (O uso de aspas garante que o Windows entenda os espaços no nome "Área de Trabalho")
-cd /d "C:\Users\dudu1\OneDrive\Área de Trabalho\dudu\ETL_Mercado_Financeiro"
+cd /d "Insira aqui o caminho completo da pasta onde o projeto se encontra"
 
 :: 2. Ativa o Ambiente Virtual
 call venv\Scripts\activate.bat
